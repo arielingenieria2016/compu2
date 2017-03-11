@@ -86,7 +86,6 @@ met_it_t respuesta_server(int mime, int sd_conn, int fd) {
             }
             write(sd_conn, "\n\n", 2);
             break;
-		    //Cálculo de Pi (Simpson)
 
         case 9:
             strcpy(met_it.funcion, "func1");
@@ -106,6 +105,11 @@ met_it_t respuesta_server(int mime, int sd_conn, int fd) {
 		case 12:
             strcpy(met_it.funcion, "mutex");
             met_it.met = 'b';
+            return met_it;
+			break;
+		case 13:
+            strcpy(met_it.funcion, "memoria");
+            met_it.met = 'c';
             return met_it;
 			break;
     }

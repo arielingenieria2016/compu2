@@ -9,16 +9,21 @@
 #include "newton.h"
 #include "resultado_newton.h"
 #include "resultado_mutex.h"
+#include "resultado_memoria.h"
 #include "lector.h"
+#include "LlenarMemoria.h"
 
-int dato = 5; // dato inicial
+
+// Variables globales para los hilos
+int dato = 5; // Dato inicial
 int punteroInicial = 0;
 int datoGuardado[2];
 long int idThreadLector[2];
 
-void controlador(int sd_conn, struct sockaddr *cli_addr)
-{
-  
+void controlador(int sd_conn, struct sockaddr *cli_addr, Mem_compartida ParImpar, Mem_compartida *Memoria, sem_t *sem1){
+
+
+  // Variables para la funcion de los thereads.
   int thread_num = 3;
   pthread_t *threads;
   threads = malloc (thread_num * sizeof (pthread_t));
@@ -26,10 +31,16 @@ void controlador(int sd_conn, struct sockaddr *cli_addr)
   pthread_mutex_init(&leer.mlectores, NULL);
   pthread_cond_init (&leer.done, NULL);
 
+
+
+  // Variables para la funcion de Newton.
   params_Newton p = {"(x*x)-3",0.1,1E-8,100000000,0,1};
   params_Newton q = {"(x*x)-2",0.1,1E-8,100000000,0,2};
   params_Newton e = {"(x*x)-1",0.1,1E-8,100000000,0,3};
 
+  
+
+  // variables para analizar la url
   char urlaux[256] = "";
   http_req_t req;
   int i = 0;
@@ -37,9 +48,9 @@ void controlador(int sd_conn, struct sockaddr *cli_addr)
   int fd, mime;
   int http_ok = 0;
 
-  req = urlparseo (sd_conn);	//Parseamos la url y metemos sus componentes dentro de la estructura
+  req = urlparseo (sd_conn);	// Parseamos la url y metemos sus componentes dentro de la estructura.
 
-  if (verificar_url (req.method)){		//Se chequea el metodo del request para confirmar que esté bien hecho, sino se devuelve el error.
+  if (verificar_url (req.method)){	  // Se chequea el metodo del request para confirmar que esté bien hecho, sino se devuelve el error.
     	write (1, "Metodo Correcto\n", 16);
     	http_ok++;
 
@@ -86,22 +97,20 @@ void controlador(int sd_conn, struct sockaddr *cli_addr)
 
     if (met_it.met=='a')	{   //Para el metodo a se realiza el metodo de newton
 		
+		pthread_t thread[0];
 		if(strcmp(met_it.funcion, "func1") == 0){
-			pthread_t thread[1];
 			pthread_create(&thread[0],NULL,newton,(void*)&p);
 			pthread_join(thread[0],NULL);
 			resultado_newton (sd_conn, met_it.funcion, met_it.met, p);
 		}
 
 		if(strcmp(met_it.funcion, "func2") == 0){
-			pthread_t thread[1];
 			pthread_create(&thread[0],NULL,newton,(void*)&q);
 			pthread_join(thread[0],NULL);
 			resultado_newton (sd_conn, met_it.funcion, met_it.met, q);
 		}
 
 		if(strcmp(met_it.funcion, "func3") == 0){
-			pthread_t thread[1];
 			pthread_create(&thread[0],NULL,newton,(void*)&e);
 			pthread_join(thread[0],NULL);
 			resultado_newton (sd_conn, met_it.funcion, met_it.met, e);
@@ -129,6 +138,13 @@ void controlador(int sd_conn, struct sockaddr *cli_addr)
 		free(params_array);
 		memset( datoGuardado, '\0', 2 );
 		memset( idThreadLector, '\0', 2 );
+	}
+	
+	if (met_it.met=='c')	{	 //Se realiza la funcion que aplica memoria compartida y semaforos
+		
+		LlenarMemoria(ParImpar, sem1, Memoria); //Enviamos el resultado a memoria compartida
+		resultado_memoria(sd_conn, met_it.met, Memoria);
+
 	}
     
   }

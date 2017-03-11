@@ -14,12 +14,13 @@ extern "C" {
 #include <sys/stat.h>
 #include <pthread.h>
 #include <fcntl.h>
-#include <time.h>
 #include <float.h>
 #include <math.h>
+#include <sys/shm.h>
 #include <semaphore.h>
 
 #define RES_LEN 256
+#define SEM_PATH  "/sempath"
 
     struct sockaddr *cli_addr;
 
@@ -53,7 +54,15 @@ extern "C" {
 
 	met_it_t met_it;
 
-    void controlador(int sd_conn, struct sockaddr *cli_addr);
+	typedef struct Memoria_compartida{  //Estructura de la memoria compartida
+        int valor;
+    } Mem_compartida;
+
+	sem_t *sem1;
+	int Id_Memoria;
+	Mem_compartida *Memoria;
+
+    void controlador(int sd_conn, struct sockaddr *cli_addr, Mem_compartida ParImpar, Mem_compartida *Memoria, sem_t *sem1);
 
 #ifdef	__cplusplus
 }

@@ -1,6 +1,6 @@
 #include "parse.h"
 
-http_req_t parse(int sd_conn) {
+http_req_t parse(int sd_conn) { 
 
     char delim[] = "\n";
     char delim2[] = " ";
@@ -22,15 +22,15 @@ http_req_t parse(int sd_conn) {
         switch (i) {
 
             case 0:
-                strncpy(req.method, token2, len);
+                strncpy(req.method, token2, len); //GET
                 break;
 
             case 1:
-                strncpy(req.url, token2, len);
+                strncpy(req.url, token2, len);  //google.com
                 break;
 
             case 2:
-                strncpy(req.ver, token2, len);
+                strncpy(req.ver, token2, len); //http/1.1
                 break;
         }
 

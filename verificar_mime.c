@@ -70,6 +70,14 @@ int verificar_mime(char *arch) {
                                                     	break;
                                             	}
                                             	break;
+											case 'c':
+                                            	token2 = token2 + 1;
+                                            	switch (token2[0]) {
+                                                	case '1':
+                                                    	return 13;
+                                                    	break;
+                                            	}
+                                            	break;
                                     	 }
 
                                 } else {
