@@ -1,0 +1,65 @@
+<html>
+
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+	<link href='./css/style.css' rel='stylesheet' type='text/css'>
+    <title>Detalle</title>
+  </head>
+
+  <body>
+
+	<div class="cabecera">
+		<div class="contenidoCabecera">
+			<span class="TituloPagina">Computacion 2</span>
+		</div>
+	</div>
+
+	<div class="bodystyle">
+
+		<div class="LetraTitulo">Trabajo Final Computacion 2 - Facultad de Mendoza</div>
+		
+		<div class="LetraSubTitulo">Alumno: Ariel Basay (Legajo 53114) (Ingeniería en Informática).</div>
+		<div class="LetraSubTitulo">Año: 2017.</div>
+     
+     	<div class="LetraTitulo">Detalles del Programa</div>
+
+		<div class="Letra">El programa consiste en la realizacion de calculos matematicos, esta montado en un servidor web(C), las consultas al mismo se manejan con sockets concurrente multiproceso y soporte Html y Css, separando la interfaz de usuario de la logica. Cada proceso a su vez crea y ejecuta una cantidad de hilos para realizar los calculos paralelizables en el caso de Simpson y un hilo en el caso de Newton. El puerto para ingresar es el 8000 (localhost:8000 o 127.0.0.1:8000).</div>
+
+	 	<div class="LetraTitulo" style="margin-bottom:20px;">Lista de Cálculos Disponibles</div>
+
+		<div class="LetraSubTitulo">Metodo de Newton-Raphson.</div>
+
+		<div class="Letra">En análisis numérico, el método de Newton (conocido también como el método de Newton-Raphson o el método de Newton-Fourier) es un algoritmo para encontrar aproximaciones de los ceros o raíces de una función real. El método de Newton-Raphson es un método abierto, en el sentido de que no está garantizada su convergencia global. La única manera de alcanzar la convergencia es seleccionar un valor inicial lo suficientemente cercano a la raíz buscada. Así, se ha de comenzar la iteración con un valor razonablemente cercano al cero (denominado punto de arranque o valor supuesto). Una vez que se ha hecho esto, el método linealiza la función por la recta tangente en ese valor supuesto. La abscisa en el origen de dicha recta será, según el método, una mejor aproximación de la raíz que el valor anterior. Se realizarán sucesivas iteraciones hasta que el método haya convergido lo suficiente. Sea f: [a, b] -> R función derivable definida en el intervalo real [a, b]. Empezamos con un valor inicial x0 y definimos para cada número natural n.<br><br>
+
+    x n+1 = x n − (f (x n)/ f′ (x n))<br><br>
+
+Donde f' denota la derivada de f.<br><br>
+
+Nótese que el método descrito es de aplicación exclusiva para funciones de una sola variable.<br>
+Error relativo entre dos aproximaciones sucesivas:<br><br>
+
+    E = | x k+1 − x k | / | x k+1 |<br><br>
+
+Con lo cual se toma el error relativo como si la última aproximación fuera el valor exacto. Se detiene el proceso iterativo cuando este error relativo es aproximadamente menor que una cantidad fijada previamente.<br><br>
+
+El calculo se realiza en un solo hilo que ejecuta varias funciones segun un coeficiente del 0 al 9 que ingrese el usuario, mandado a traves de un formulario html que envia una variable por get. El formulario esta validado para que solo se realice el calculo cuando efectivamente se ingrese un valor del 0 al 9.<br><br></div>
+
+		<div class="LetraSubTitulo">Metodo de Simpson.</div>
+
+		<div class="Letra">La regla de simpson es un método de integración numérica para obtener la aproximación de una integral. Utilizaremos la integral entre 0 y 1 de [varialble aleatoria/(1+x²)], dividimos el intervalo de integración entre el total de hilos involucrados y hacer que cada uno calcule un intervalo definido de la integral. Una vez obtenido cada resultado parcial, se suman todos para obtener la aproximación de la funcion. Es decir, que sobre cada subintervalo en el que se divide [a,b] que en este caso es 0 y 1 se aproxima f por un polinomio de segundo grado, para luego calcular la integral como suma de las áreas formados en esos subintervalos.<br><br>
+
+El calculo se realiza a traves de varios hilos, segun un coeficiente del 0 al 9 que ingrese el usuario, mandado a traves de un formulario html que envia una variable por get. El formulario esta validado para que solo se realice el calculo cuando efectivamente se ingrese un valor del 0 al 9.<br><br></div>
+
+		<div class="LetraSubTitulo">Historial de Resultados.</div>
+
+		<div class="Letra">Esta opcion me permite visualizar los 10 primeros resultados que vaya calculando el usuario cuando ingrese los coeficientes, ya sea para realizar calculos de Newton-Raphson o de Simpson, una vez llegado a esa cantidad se reinicia el historial.</div>
+		
+	 	<a class="btn" href="index.html">Volver</a>
+		
+	</div>
+         
+  </body>
+
+</html>

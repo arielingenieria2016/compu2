@@ -4,33 +4,45 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
+	<link href='./css/style.css' rel='stylesheet' type='text/css'>
     <title>Inicio</title>
   </head>
 
   <body>
 
-	<h3>Método Newton-Raphson
-        <div>
-            Funciones
-                <ul>
-                    <li>
-                    	<a href="index.html?a1">(x*x)-3</a>
-                  	</li>
-                  	<li>
-                    	<a href="index.html?a2">(x*x)-2</a>
-                  	</li>
-					<li>
-                    	<a href="index.html?a3">(x*x)-4</a>
-                  	</li>
-                </ul>
-         </div>
-     </h3>
-     <h3>Ejercicio con mutex
-	 	 <a href="index.html?b1">Hilos con Mutex</a>
-     </h3>
-	 <h3>Ejercicio con memoria compartida y semaforos
-	 	 <a href="index.html?c1">Determinar si el valor ingresado con -n es par o impar</a>
-     </h3>          
+	<div class="cabecera">
+		<div class="contenidoCabecera">
+			<span class="TituloPagina">Computacion 2</span>
+			<span style="float:right;"><a href="detalle.html" class="boton">Detalles del Software</a></span>
+		</div>
+	</div>
+
+	<div class="bodystyle">
+
+		<div class="LetraTitulo">Método Newton-Raphson</div>
+
+		<div class="LetraSubTitulo">Introduzca un valor del 0 al 9 para la funcion " (x*x)-'valor' ".</div>
+
+		<FORM ACTION="index.html" METHOD="GET">
+			<INPUT TYPE="text" NAME="a" class="textbox" size="10" maxlength="1"><BR>
+			<INPUT TYPE="submit" VALUE="Enviar" class="btn">
+		</FORM>
+     
+     	<div class="LetraTitulo">Método Simpson</div>
+
+		<div class="LetraSubTitulo">Introduzca un valor del 0 al 9 para la funcion " 'valor'/(1+x*x) ".</div>
+
+		<FORM ACTION="index.html" METHOD="GET">
+			<INPUT TYPE="text" NAME="b" class="textbox" size="10" maxlength="1"><BR>
+			<INPUT TYPE="submit" VALUE="Enviar" class="btn">
+		</FORM>
+
+	 	<div class="LetraTitulo" style="margin-bottom:20px;">Historial Resultados</div>
+		
+	 	 <a class="btn" href="index.html?c1">Visualizar</a>
+		
+	</div>
+         
   </body>
 
 </html>

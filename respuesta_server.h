@@ -8,7 +8,7 @@ extern "C" {
 #include <string.h>
 #include "controlador.h" 
 
-    met_it_t respuesta_server(int mime, int sd_conn, int fd);
+    met_it_t respuesta_server(int mime, int sd_conn, int fd, met_it_t met_it);
 
 
 #ifdef	__cplusplus

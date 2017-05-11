@@ -20,7 +20,6 @@ extern "C" {
 #include <semaphore.h>
 
 #define RES_LEN 256
-#define SEM_PATH  "/sempath"
 
     struct sockaddr *cli_addr;
 
@@ -30,8 +29,6 @@ extern "C" {
         char ver[10];
     } http_req_t;
 
-    extern http_req_t req;
-
 	typedef struct newton { //Estructura de la funcion newton
 		char func[10];
 		long double xo,eps;
@@ -40,29 +37,34 @@ extern "C" {
 		int tipo;
 	} params_Newton;
 
-	typedef struct leer { //Estructura de la funcion con mutex
-		pthread_mutex_t mlectores;
+	typedef struct simpson { //Estructura de la funcion con mutex
+		pthread_mutex_t mutex;
 		pthread_cond_t done;
-	} params_Leer;
-
-	extern params_Leer leer;
+		unsigned long long int coef;
+        int thr_id;
+        long double h;
+		int integral;
+	} params_Simpson;
 
 	typedef struct met_it { //Estructura que contiene el calculo a realizar y las iteraciones
         char funcion[10];
         char met;
+		unsigned long long int it;
+		int integral;
+		int newton;
     } met_it_t;
 
-	met_it_t met_it;
+	typedef struct resultado { //Estructura que contiene el los distintos posibles resultados de los cálculos
+        long double resultado_final;
+        int tipo;
+    } resultado_calculado;
 
 	typedef struct Memoria_compartida{  //Estructura de la memoria compartida
-        int valor;
+        long double ultimo_resultado[10];
+      	int indice;
     } Mem_compartida;
 
-	sem_t *sem1;
-	int Id_Memoria;
-	Mem_compartida *Memoria;
-
-    void controlador(int sd_conn, struct sockaddr *cli_addr, Mem_compartida ParImpar, Mem_compartida *Memoria, sem_t *sem1);
+    void controlador(int sd_conn, struct sockaddr *cli_addr, Mem_compartida *Memoria, sem_t *semaforo);
 
 #ifdef	__cplusplus
 }

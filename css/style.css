@@ -1,0 +1,206 @@
+@charset "utf-8";
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+.LetraTitulo {
+	font-weight: bold;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:16px;
+	margin-bottom:10px;
+	margin-top:10px;
+}
+.LetraSubTitulo {
+	font-weight: bold;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:14px;
+	margin-bottom:10px;
+}
+.Letra {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:12px;
+	margin-bottom:10px;
+}
+.bodystyle {
+	width: 1024px;
+	margin-left:auto;
+	margin-right:auto;
+}
+
+.cabecera {
+	width: 100%;
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#258dc8+0,258dc8+100;Blue+Flat+%231 */
+	background: #258dc8; /* Old browsers */
+	background: -moz-linear-gradient(top, #258dc8 0%, #258dc8 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(top, #258dc8 0%,#258dc8 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, #258dc8 0%,#258dc8 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#258dc8', endColorstr='#258dc8',GradientType=0 ); /* IE6-9 */
+}
+
+.contenidoCabecera {
+    width: 1024px;
+	height: 70px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-bottom:15px;
+	font-weight: bold;
+	font-family: Arial, Helvetica, sans-serif;
+	font-size:34px;
+	padding-top:20px;
+	color:#fff;
+}
+
+/* Menu simple */
+
+.menu_simple ul {
+    margin: 20px; 
+    padding: 0;
+    width: 185px;
+    list-style-type: none;
+	border:solid 3px #ccc;
+}
+
+.menu_simple ul li a {
+    text-decoration: none;
+    color: #000; 
+    padding: 10.5px 11px;
+    background-color: #fff;
+	text-align:center;
+    display:block;
+}
+ 
+.menu_simple ul li a:visited {
+    color: #000;
+}
+ 
+.menu_simple ul li a:hover, .menu_simple ul li .current {
+    color: #fff;
+    background-color: #000;
+}
+
+.btn {
+  background: #3498db;
+  background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+  background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+  background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+  background-image: -o-linear-gradient(top, #3498db, #2980b9);
+  background-image: linear-gradient(to bottom, #3498db, #2980b9);
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 16px;
+  padding: 8px 12px 8px 12px;
+  text-decoration: none;
+  overflow:hidden;
+  margin: 2px 5px 5px 5px;
+  border:0px;
+}
+
+.btn:hover {
+  background: #3cb0fd;
+  background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+  background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+  text-decoration: none;
+}
+
+.textbox{
+  border: 1px solid #DBE1EB;
+  font-size: 18px;
+  font-family: Arial, Verdana;
+  padding-left: 7px;
+  padding-right: 7px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -o-border-radius: 4px;
+  background: #FFFFFF;
+  background: linear-gradient(left, #FFFFFF, #F7F9FA);
+  background: -moz-linear-gradient(left, #FFFFFF, #F7F9FA);
+  background: -webkit-linear-gradient(left, #FFFFFF, #F7F9FA);
+  background: -o-linear-gradient(left, #FFFFFF, #F7F9FA);
+  color: #2E3133;
+  margin: 5px;
+}
+  
+.textbox:focus{
+  color: #2E3133;
+  border-color: #FBFFAD;
+}
+
+.contenedorlink{
+  margin-bottom:10px;
+}
+
+a { margin: 0px; float: left; clear: left;}
+
+a.boton {
+  text-decoration: none;
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ffffff+0,e5e5e5+100;White+3D */
+background: #ffffff; /* Old browsers */
+background: -moz-linear-gradient(top, #ffffff 0%, #e5e5e5 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, #ffffff 0%,#e5e5e5 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, #ffffff 0%,#e5e5e5 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e5e5e5',GradientType=0 ); /* IE6-9 */
+  color: #222;
+  border: 1px solid #333;
+  padding: 10px;
+  font-size:15px;
+  border-radius: 4px;
+  -moz-border-radius: 4px;
+  -webkit-border-radius: 4px;
+  -o-border-radius: 4px;
+}
+a.boton:hover {
+  text-decoration:underline;
+}
+a.boton:active {
+  border: 1px solid #333;
+}

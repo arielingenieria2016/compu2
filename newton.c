@@ -11,6 +11,7 @@ void *newton(void *args){
 	int tipo=(p->tipo);
 	double x = (p->xo);
 	
+    /*hasta que sea mayor el resultado de la funcion que el eps(tolerancia de error) y menor las iteraciones que el maximo establecido */
 	while(abs_(f(x, tipo))>=(p->eps) && iter<=(p->max_iter)){
 		x = x - (f(x, tipo)/fprima(x, tipo));
 		iter = iter + 1;

@@ -1,0 +1,14 @@
+Arreglos durante las clases de consulta
+
+-Cambie los shmget en memoria compartida por memoria compartida en Posix, la misma se usaba en primer lugar para que se pudieran comunicar dos programas totalmente distintos en donde en el primero se le pasaba un valor y luego en el otro programa recuperaba el mismo de la memoria para determinar si era par o impar, luego se cambio en un contador en donde se pasaba un valor en un programa, en el otro lo tomaba y empezaba a contar descontando 1 al mismo, los otros usuarios esperaban hasta que llegara el contador actual a 0 y comenzaba el que seguia, finalmente se cambio y se utilizo la memoria anonima en donde se guardaba un historial en el mismo, sobre los calculos realizados, ya sea de newton o de simpson, los diez primeros y se reinicia, como una tercera opcion en la pantalla principal, se elimino el programa aparte y quedo la opcion de memoria en el programa principal.
+-Antes la seccion que trabajaba con hilos consistia en que un hilo escribia, luego otro leia el valor y le sumaba dos, asi tambien con otros dos hilos, fue cambiado por un codigo de numeros amigos, luego fue cambiado finalmente por un codigo del metodo de simpson, en el cual a traves de un formulario html se pasan los valores del 0 al 9 para que se calcule sobre una funcion en particular, cada resultado se guarda en memoria.
+-El metodo newton antes se calculaba sobre tres opciones posibles seleccionables de una lista, se cambio y se agrego un formulario donde se puede poner un valor del 0 al 9 para realizar calculos, ambos formularios estan validados para que no se puedan colocar cualquier valor, cada resultado se guarda en memoria.
+-Antes para mostrar los resultados estaban los archivos resultado_newton, resultado_simpson y resultado_historial, se unifico todos esos archivos en uno solo llamado resultado_memoria.
+-Elabore la arquitectura del programa y para verla es la opcion detalles del software de la pagina principal.
+-Se agrego el archivo detalle.html y su diseño y se modificaron los diseños anteriores para que todo quedara en orden.
+-El dia 10/05/2017 fui a una clase de consulta aparte en la utn para subir mi trabajo a un servidor y probar que funcionara bien tanto en ipv4 como ipv6 y funciono todo en orden, alli se me pidieron aparte nuevos arreglos:
+	Que el usuario ingrese la cantidad de iteraciones de los calculos tanto para newton como para simpson, y el numero de hilos para calcular simpson, y que el historial cuando llegue a 10 no se reinicie sino que vaya pisando el valor mas viejo, y yo habia utilizado semaforos nombrados y me pidio que lo cambie por semaforo no nombrado. Estas correcciones aun estoy realizandolas.
+
+
+
+Para probar ingresar http://127.0.0.1:8000/index.html en el navegador y ejecutar en la consola ./servidor

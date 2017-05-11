@@ -5,9 +5,7 @@
 extern "C" {
 #endif
 
-
     double f(double x, int tipo);
-
 
 #ifdef	__cplusplus
 }

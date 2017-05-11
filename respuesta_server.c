@@ -1,6 +1,6 @@
 #include "respuesta_server.h"
 
-met_it_t respuesta_server(int mime, int sd_conn, int fd) {
+met_it_t respuesta_server(int mime, int sd_conn, int fd, met_it_t met_it) {
 
     int leido = 0;
     char buff[4096];
@@ -103,13 +103,113 @@ met_it_t respuesta_server(int mime, int sd_conn, int fd) {
             return met_it;
 			break;
 		case 12:
-            strcpy(met_it.funcion, "mutex");
-            met_it.met = 'b';
+            strcpy(met_it.funcion, "func4");
+            met_it.met = 'a';
             return met_it;
 			break;
 		case 13:
-            strcpy(met_it.funcion, "memoria");
+            strcpy(met_it.funcion, "func5");
+            met_it.met = 'a';
+            return met_it;
+			break;
+		case 14:
+            strcpy(met_it.funcion, "func6");
+            met_it.met = 'a';
+            return met_it;
+			break;
+		case 15:
+            strcpy(met_it.funcion, "func7");
+            met_it.met = 'a';
+            return met_it;
+			break;
+		case 16:
+            strcpy(met_it.funcion, "func8");
+            met_it.met = 'a';
+            return met_it;
+			break;
+		case 17:
+            strcpy(met_it.funcion, "func9");
+            met_it.met = 'a';
+            return met_it;
+			break;
+		case 18:
+            strcpy(met_it.funcion, "func10");
+            met_it.met = 'a';
+            return met_it;
+			break;
+		case 19:
+            strcpy(met_it.funcion, "Simpson");
+            met_it.met = 'b';
+			met_it.integral = 0;
+            return met_it;
+			break;
+		case 20:
+            strcpy(met_it.funcion, "Simpson");
+            met_it.met = 'b';
+			met_it.integral = 1;
+            return met_it;
+			break;
+		case 21:
+            strcpy(met_it.funcion, "Simpson");
+            met_it.met = 'b';
+			met_it.integral = 2;
+            return met_it;
+			break;
+		case 22:
+            strcpy(met_it.funcion, "Simpson");
+            met_it.met = 'b';
+			met_it.integral = 3;
+            return met_it;
+			break;
+		case 23:
+            strcpy(met_it.funcion, "Simpson");
+            met_it.met = 'b';
+			met_it.integral = 4;
+            return met_it;
+			break;
+		case 24:
+            strcpy(met_it.funcion, "Simpson");
+            met_it.met = 'b';
+			met_it.integral = 5;
+            return met_it;
+			break;
+		case 25:
+            strcpy(met_it.funcion, "Simpson");
+            met_it.met = 'b';
+			met_it.integral = 6;
+            return met_it;
+			break;
+		case 26:
+            strcpy(met_it.funcion, "Simpson");
+            met_it.met = 'b';
+			met_it.integral = 7;
+            return met_it;
+			break;
+		case 27:
+            strcpy(met_it.funcion, "Simpson");
+            met_it.met = 'b';
+			met_it.integral = 8;
+            return met_it;
+			break;
+		case 28:
+            strcpy(met_it.funcion, "Simpson");
+            met_it.met = 'b';
+			met_it.integral = 9;
+            return met_it;
+			break;
+		case 29:
+            strcpy(met_it.funcion, "Historial");
             met_it.met = 'c';
+            return met_it;
+			break;
+		case 30:
+            strcpy(met_it.funcion, "Error");
+            met_it.met = 'a';
+            return met_it;
+			break;
+		case 31:
+            strcpy(met_it.funcion, "Error");
+            met_it.met = 'b';
             return met_it;
 			break;
     }

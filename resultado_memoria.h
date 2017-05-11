@@ -11,10 +11,9 @@ extern "C" {
 
 #include "controlador.h"
 
-
 #define LINEMAX 384
 
-    void resultado_memoria(int sd_conn, char met, Mem_compartida *Memoria);
+    void resultado_memoria(int sd_conn, met_it_t met_it, Mem_compartida *Memoria, params_Newton result, long double valor);
 
 #ifdef	__cplusplus
 }

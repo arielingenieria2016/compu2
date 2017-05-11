@@ -1,13 +1,12 @@
-#ifndef LECTOR_H
-#define	LECTOR_H
+#ifndef SIMPSON_H
+#define	SIMPSON_H
 
 #ifdef	__cplusplus
 extern "C" {
 #endif
 #include "controlador.h"
 
-    void *lector(void *arg);
-
+    void *simp(void *arg);
 
 #ifdef	__cplusplus
 }
