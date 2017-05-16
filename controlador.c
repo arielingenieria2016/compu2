@@ -15,10 +15,9 @@
 // Variables globales para los hilos
 long double suma = 0.0;
 
-void controlador(int sd_conn, struct sockaddr *cli_addr, Mem_compartida *Memoria, sem_t *semaforo){
+void controlador(int sd_conn, struct sockaddr *cli_addr, Mem_compartida *Memoria, sem_t *semaforo, int thread_num, int iteraciones){
   
   // Variables para la funcion de los thereads.
-  int thread_num = 10;
   pthread_t *threads;
   threads = malloc (thread_num * sizeof (pthread_t));
   params_Simpson *params_array;	//Se crea un puntero para crear una estructura para cada thread.
@@ -34,16 +33,16 @@ void controlador(int sd_conn, struct sockaddr *cli_addr, Mem_compartida *Memoria
   resultado_calculado calculo;
 
   // Variables para la funcion de Newton.
-  params_Newton a = {"(x*x)-0",0.1,1E-8,100000000,0,0};
-  params_Newton p = {"(x*x)-1",0.1,1E-8,100000000,0,1};
-  params_Newton q = {"(x*x)-2",0.1,1E-8,100000000,0,2};
-  params_Newton r = {"(x*x)-3",0.1,1E-8,100000000,0,3};
-  params_Newton s = {"(x*x)-4",0.1,1E-8,100000000,0,4};
-  params_Newton b = {"(x*x)-5",0.1,1E-8,100000000,0,5};
-  params_Newton c = {"(x*x)-6",0.1,1E-8,100000000,0,6};
-  params_Newton d = {"(x*x)-7",0.1,1E-8,100000000,0,7};
-  params_Newton e = {"(x*x)-8",0.1,1E-8,100000000,0,8};
-  params_Newton f = {"(x*x)-9",0.1,1E-8,100000000,0,9};
+  params_Newton a = {"(x*x)-0",0.1,1E-8,iteraciones,0,0};
+  params_Newton p = {"(x*x)-1",0.1,1E-8,iteraciones,0,1};
+  params_Newton q = {"(x*x)-2",0.1,1E-8,iteraciones,0,2};
+  params_Newton r = {"(x*x)-3",0.1,1E-8,iteraciones,0,3};
+  params_Newton s = {"(x*x)-4",0.1,1E-8,iteraciones,0,4};
+  params_Newton b = {"(x*x)-5",0.1,1E-8,iteraciones,0,5};
+  params_Newton c = {"(x*x)-6",0.1,1E-8,iteraciones,0,6};
+  params_Newton d = {"(x*x)-7",0.1,1E-8,iteraciones,0,7};
+  params_Newton e = {"(x*x)-8",0.1,1E-8,iteraciones,0,8};
+  params_Newton f = {"(x*x)-9",0.1,1E-8,iteraciones,0,9};
 
   // variables para analizar la url
   char urlaux[256] = "";
@@ -196,7 +195,7 @@ Fuente:https://es.wikipedia.org/wiki/M%C3%A9todo_de_Newton */
 
 	}else{
 
-		met_it.it=100000;
+		met_it.it=iteraciones;
       	coef = met_it.it / thread_num;	//Calculo cuantas iteraciones le corresponde a cada thread del pool.
       	h = 1.0 / (long double) met_it.it;
 

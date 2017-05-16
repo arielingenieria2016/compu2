@@ -1,7 +1,7 @@
 #include "salvar_resultado.h"
 
 void salvar_resultado(resultado_calculado calculo, sem_t *semaforo, Mem_compartida *Memoria){
-	int i, contador;
+	int i, contador, contador2;
 	
 	/********* Sección de entrada ****/
 	if (sem_wait(semaforo) == -1){
@@ -12,9 +12,12 @@ void salvar_resultado(resultado_calculado calculo, sem_t *semaforo, Mem_comparti
 
 	if (Memoria->indice == 10){                           // Si la posición a escribir es 10 significa que el arry se termino
 		Memoria->indice = 0;
-		for (i = 0; i < 10; i++){
-			Memoria->ultimo_resultado[i] = 0.0;
+		for (i = 0; i < 9; i++){
+			contador2=i+1;
+			Memoria->ultimo_resultado[i] = Memoria->ultimo_resultado[contador2];
 		}
+		Memoria->ultimo_resultado[9]=0.0;
+		Memoria->indice=9;
 	}
 	contador = Memoria->indice;
 

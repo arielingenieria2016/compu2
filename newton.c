@@ -13,6 +13,7 @@ void *newton(void *args){
 	
     /*hasta que sea mayor el resultado de la funcion que el eps(tolerancia de error) y menor las iteraciones que el maximo establecido */
 	while(abs_(f(x, tipo))>=(p->eps) && iter<=(p->max_iter)){
+		printf("\nResultado: %.14f \n", f(x, tipo));
 		x = x - (f(x, tipo)/fprima(x, tipo));
 		iter = iter + 1;
 	}

@@ -19,7 +19,7 @@
 #include "controlador.h"
 
 int main(int argc, char *const *argv) {
-  int sd, sd_conn, c, port_num = 8000;
+  int sd, sd_conn, c, port_num = 8000, thread_num = 10, iteraciones = 100000;
   int reuse = 1;
   socklen_t addrlen;
   struct sockaddr_in6 srv_addr;
@@ -35,9 +35,7 @@ int main(int argc, char *const *argv) {
 
   sem_t *semaforo;
 
-  //signal(SIGINT, cerrarPrograma); //Libera la memoria y los semaforos
-
-  while ((c = getopt (argc, argv, "p:")) != -1)
+  while ((c = getopt (argc, argv, "p:u:i:")) != -1)
   switch (c)
   {
     case 'p':
@@ -49,14 +47,34 @@ int main(int argc, char *const *argv) {
     }
     break;
 
+	case 'u':
+    if (atoi(optarg) > 0) {
+      thread_num = atoi(optarg);
+    } else {
+      fprintf(stderr, "Numero de Threads Invalido\n");
+      exit(EXIT_FAILURE);
+    }
+    break;
+
+	case 'i':
+    if (atoi(optarg) > 0) {
+      iteraciones = atoi(optarg);
+    } else {
+      fprintf(stderr, "Numero de Iteraciones Invalido\n");
+      exit(EXIT_FAILURE);
+    }
+    break;
+
     default:
     abort();
   }
 
   printf("\nPuerto: %d \n", port_num);
+  printf("\nEl nro de Threads es: %d \n", thread_num);
+  printf("\nEl nro de Iteraciones es: %d \n", iteraciones);
 
   /* Mapeamos el segmento a la memoria */
-  //sizeof (Mem_compartida); El segemento debe tener como minimo el tamaño de la estructura.
+  //sizeof (Mem_compartida); El segmento debe tener como minimo el tamaño de la estructura.
 
   Memoria = (Mem_compartida *) mmap (NULL, sizeof (Mem_compartida), PROT_READ | PROT_WRITE,MAP_SHARED | MAP_ANON, -1, 0);
   if (Memoria == NULL){
@@ -123,7 +141,7 @@ En el segundo caso, no es necesario que los programas se conecten. Cualquiera de
   while ((sd_conn = accept(sd, (struct sockaddr *) &cli_addr, &addrlen)) > 0) {
     switch (fork()) {
       case 0: // hijo
-      controlador(sd_conn, (struct sockaddr *) &cli_addr, Memoria, semaforo);
+      controlador(sd_conn, (struct sockaddr *) &cli_addr, Memoria, semaforo, thread_num, iteraciones);
       return 0;
 
       case -1: // error

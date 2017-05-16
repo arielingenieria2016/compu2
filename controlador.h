@@ -64,7 +64,7 @@ extern "C" {
       	int indice;
     } Mem_compartida;
 
-    void controlador(int sd_conn, struct sockaddr *cli_addr, Mem_compartida *Memoria, sem_t *semaforo);
+    void controlador(int sd_conn, struct sockaddr *cli_addr, Mem_compartida *Memoria, sem_t *semaforo, int thread_num, int iteraciones);
 
 #ifdef	__cplusplus
 }
